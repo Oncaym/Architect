@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Architect: Home Design Studio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="logo">Architect</div>
+      <div class="tagline">Professional Residential Floor Plan Designer</div>
+      <button class="primary" id="exportPlan">Export Design</button>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar">
+        <section class="panel">
+          <h2>Project Brief</h2>
+          <label class="field">
+            <span>Project Name</span>
+            <input type="text" id="projectName" placeholder="Horizon Residence" />
+          </label>
+          <label class="field">
+            <span>Total Square Footage</span>
+            <input type="number" id="squareFootage" min="200" value="2200" />
+          </label>
+          <label class="field">
+            <span>Floors</span>
+            <input type="number" id="floors" min="1" value="2" />
+          </label>
+          <label class="field">
+            <span>Bedrooms</span>
+            <input type="number" id="bedrooms" min="1" value="3" />
+          </label>
+          <label class="field">
+            <span>Bathrooms</span>
+            <input type="number" id="bathrooms" min="1" value="2" />
+          </label>
+          <label class="field">
+            <span>Preferred Style</span>
+            <select id="style">
+              <option value="modern">Modern</option>
+              <option value="traditional">Traditional</option>
+              <option value="coastal">Coastal</option>
+              <option value="farmhouse">Farmhouse</option>
+            </select>
+          </label>
+          <button class="primary" id="aiGenerate">Generate AI Concept</button>
+        </section>
+
+        <section class="panel">
+          <h2>Room Palette</h2>
+          <div class="room-grid" id="roomPalette"></div>
+          <button class="secondary" id="addRoom">Add Custom Room</button>
+        </section>
+
+        <section class="panel">
+          <h2>Compliance Report</h2>
+          <div class="compliance" id="compliance"></div>
+        </section>
+      </aside>
+
+      <section class="workspace">
+        <div class="toolbar">
+          <div>
+            <span class="label">Scale:</span>
+            <select id="scale">
+              <option value="0.5">1 ft = 0.5 px</option>
+              <option value="1" selected>1 ft = 1 px</option>
+              <option value="2">1 ft = 2 px</option>
+            </select>
+          </div>
+          <div>
+            <span class="label">Snap to Grid</span>
+            <label class="switch">
+              <input type="checkbox" id="snap" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="canvas" id="canvas"></div>
+      </section>
+
+      <aside class="inspector">
+        <section class="panel">
+          <h2>Room Details</h2>
+          <div id="roomDetails" class="room-details">
+            <p>Select a room to view details.</p>
+          </div>
+        </section>
+        <section class="panel">
+          <h2>Permit Checklist</h2>
+          <ul class="checklist" id="permitChecklist"></ul>
+        </section>
+      </aside>
+    </main>
+
+    <template id="roomTemplate">
+      <div class="room" draggable="true">
+        <div class="room-label"></div>
+        <div class="room-dimensions"></div>
+      </div>
+    </template>
+
+    <template id="paletteItemTemplate">
+      <button class="palette-item"></button>
+    </template>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
