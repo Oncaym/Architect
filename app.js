@@ -452,4 +452,13 @@ document.getElementById("aiGenerate").addEventListener("click", generateAIConcep
 document.getElementById("exportPlan").addEventListener("click", exportPlan);
 
 renderPalette();
-render();
+generateAIConcept();
+
+Object.values(projectInputs).forEach((input) => {
+  input.addEventListener("change", () => {
+    if (state.rooms.length === 0) {
+      return;
+    }
+    renderSidebar();
+  });
+});
